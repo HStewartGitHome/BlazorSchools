@@ -61,6 +61,25 @@ to included performance comparison between the APIs’. Basically, the test load
 the API from external sites and updates configured storage and then reads from
 each storage twice.
 
+By default, the Json in BlazorSchools.Server are using Simulated Database
+Service. To use actual the Dapper or Entity Framework server you must doing the
+following
+
+1.  Change the json to include connection string for database. Dapper use sqlDB
+    json settings. Entity Framework will be configured tomorrow and updated.
+
+2.  For Dapper, AllowDapper should be set to 1, Database needs to be publish in
+    Database directory. UseEF and UseSIM should be both 0.
+
+3.  For Entity Framework, AllowEF should be 1 and EF is use for school
+    retrieval, Use EF should be 1 – but UseSIM is 0. Migrations in
+    BlazorSchools.Server need to be performed.
+
+The difference between UseEF and AllowEF, AllowEF means that Entity Framework
+can be used but UseEF means that Entity Framework is when display school list.
+If any of AllowDapper, AllowEF or AllowSIM is 0 then Performance screen will not
+use it.
+
 The following is example screen shot from Blazor Application showing performance
 details with all storage service active
 
