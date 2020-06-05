@@ -1,0 +1,119 @@
+﻿@page "/PerfData"
+
+@using BlazorSchools.Shared
+@inject HttpClient Http
+
+
+<h3>School API Performance Data</h3>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+    <div class="h2">@errorString</div>
+}
+else if (currentPerf is null)
+{
+    <div class="h4">Loading...</div>
+}
+else
+{
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Performance</th>
+            <th>Update</th>
+            <th>Read</th>
+            <th>Read2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Initialize Performance</td>
+            <td></td>
+            <td>@currentPerf.InitPerformance</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Json Performance</td>
+            <td></td>
+            <td>@currentPerf.JsonPerformance</td>
+            <td>@currentPerf.JsonPerformance2</td>
+        </tr>
+        <tr>
+            <td>Dapper Performance</td>
+            <td>@currentPerf.DapperUpdatePerformance</td>
+            <td>@currentPerf.DapperPerformance</td>
+            <td>@currentPerf.DapperPerformance2</td>
+        </tr>
+        <tr>
+            <td>Entity Framework Performance</td>
+            <td>@currentPerf.EFUpdatePerformance</td>
+            <td>@currentPerf.EFPerformance</td>
+            <td>@currentPerf.EFPerformance2</td>
+        </tr>
+        <tr>
+            <td>Simulated Performance</td>
+            <td>@currentPerf.SimUpdatePerformance</td>
+            <td>@currentPerf.SimPerformance</td>
+            <td>@currentPerf.SimPerformance2</td>
+        </tr>
+        <tr>
+            <td>Use Simulated</td>
+            <td></td>
+            <td>@currentPerf.UseSIM</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Use Dapper Framework</td>
+            <td></td>
+            <td>@currentPerf.UseDapper</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Use Entity Framework</td>
+            <td></td>
+            <td>@currentPerf.UseEF</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Allow Dapper Framework</td>
+            <td></td>
+            <td>@currentPerf.AllowDapper</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Allow Entity Framework</td>
+            <td></td>
+            <td>@currentPerf.AllowEF</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Max Records</td>
+            <td>@currentPerf.MaxPage</td>
+            <td>@currentPerf.Records</td>
+            <td></td>
+        </tr>
+
+    </tbody>
+</table>
+}
+
+@code {
+
+    private Performance currentPerf;
+    private string errorString;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+            currentPerf = await Http.GetFromJsonAsync<Performance>("SchoolPerformance");
+
+            errorString = null;
+        }
+        catch (Exception ex)
+        {
+            errorString = $"There was an error getting our schools API performance data: { ex.Message }";
+        }
+    }
+}
