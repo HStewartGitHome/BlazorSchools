@@ -12,6 +12,27 @@ related to schools – this API is publicly available on the internet as
 <https://code.org/schools.json>. My desired was use both SQL database and
 In-memory database and filter out only content need to be transfer to client.
 
+I been working on this GitHub project and in this project, I wanted to
+experiment with Blazor Web-assembly, specifically I see if the same Web-assembly
+can be called for Blazor applications and similar WPF application. I also want
+to use external JSON service with 5000+ records and test the performance
+differences between Dapper, Entity Framework and Simulated all in same
+application.
+
+I really like Blazor development in my previous GitHub project and I found that
+with Web- assembly that it even better. Using database services with all the
+same interfaces makes Dapper, Entity Framework and Simulated. Adding Entity
+Framework was as simple as cloning the interface and add migration for database.
+This was done in a matter of hours and I would believe it would not be much to
+do any other database.
+
+The interesting thing is performance, I found with a large number of items, that
+the screen should be page and a lot of this is because Blazor is web based and
+loading 5000 items on screen is rather show. The Blazor application is web bases
+and rendering of 5000 items is rather slow - this can be shown in difference
+between Schools and Schools Page screen. In the WPF even the loading is still
+there, the difference is less but currently WPF does only shows top items.
+
 Another interesting thing happen that help this project. Microsoft release
 Blazor Web Assembly.
 
