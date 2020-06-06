@@ -61,24 +61,39 @@ to included performance comparison between the APIs’. Basically, the test load
 the API from external sites and updates configured storage and then reads from
 each storage twice.
 
-By default, the Json in BlazorSchools.Server are using Simulated Database
-Service. To use actual the Dapper or Entity Framework server you must doing the
-following
+By default, the project is setup using only Simulated Database Service, this
+means Json is pull down from the service and objects are stored in memory.
 
-1.  Change the json to include connection string for database. Dapper use sqlDB
-    json settings. Entity Framework will be configured tomorrow and updated.
+To use Dapper database service, you need to do the following
 
-2.  For Dapper, AllowDapper should be set to 1, Database needs to be publish in
-    Database directory. UseEF and UseSIM should be both 0.
+1.  Specified the correct SQLDB connect string in json file
 
-3.  For Entity Framework, AllowEF should be 1 and EF is use for school
-    retrieval, Use EF should be 1 – but UseSIM is 0. Migrations in
-    BlazorSchools.Server need to be performed.
+2.  Set AllowDapper to 1 in Json file for BlazorSchools.Server
 
-The difference between UseEF and AllowEF, AllowEF means that Entity Framework
-can be used but UseEF means that Entity Framework is when display school list.
-If any of AllowDapper, AllowEF or AllowSIM is 0 then Performance screen will not
-use it.
+3.  Set UseSIM to 0 and UseEF to 0 if desired for school queries to use Dapper
+    as buffer
+
+4.  Publish the Database in database project
+
+To use Entity Framework database service, use need to do the following
+
+1.  Specified the correct EFDB connect string in Json file
+
+2.  Set AllowEF to 1 in json file for BlazorSchools.Server
+
+3.  Set UseSIM to 0 if desired for school queries to use Entity Framework as
+    buffer
+
+4.  Run Migration on BlazorSchools.Server
+
+The AllowXXX settings means that DataService objects will be initialized and
+will acted in Performance screen and available for Schools and Schools Pages
+screen. The UseXXX indicates that this service and only that service is use for
+Schools and Schools Pages screens. If both UseSIM and UseEF is 0 is than Dapper
+is user unless AllowDapper is 0
+
+Having AllowDapper and AllowEF to 0 means UseSIM is 1, this is by default and
+allows application to run without need for SQL server.
 
 The following is example screen shot from Blazor Application showing performance
 details with all storage service active
