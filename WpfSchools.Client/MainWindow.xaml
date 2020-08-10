@@ -30,28 +30,28 @@
     </Style>
     </Window.Resources>
     <Grid Width="1276">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="70"/>
-			<RowDefinition/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="244"/>
-			<ColumnDefinition/>
-		</Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="244"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <TextBlock Text="   WPF Schools" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="1" Background="#FF020546" Height="70" Width="244" FontSize="28" />
         <Button Content="About   " Style="{StaticResource Link}" Grid.Row="0" Grid.Column="1" FontSize="24" HorizontalAlignment="Right" Foreground="Blue"
                   Click="OnClickAbout" ClickMode="Press"/>
-		<Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" Width="244" Height="730">
-			<Border.Background>
-				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-					<GradientStop Color="#FF4B013F" Offset="0.979"/>
-					<GradientStop Color="#FF270C7A" Offset="0.025"/>
-				</LinearGradientBrush>
-			</Border.Background>
-			<StackPanel >
-				<Button x:Name="btnHome" Content="Home" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
+        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Stretch" Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" Width="244" Height="730">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4B013F" Offset="0.979"/>
+                    <GradientStop Color="#FF270C7A" Offset="0.025"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel >
+                <Button x:Name="btnHome" Content="Home" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
                         Click="OnClickHomePress" ClickMode="Press"/>
-				<Button x:Name="btnSchools" Content="Schools" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
+                <Button x:Name="btnSchools" Content="Schools" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
                         Click="OnClickSchoolsPress" ClickMode="Press"/>
                 <Button x:Name="btnSchoolsLoad" Content="Schools" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
                         Click="OnClickSchoolsLoad" ClickMode="Press" Visibility="Collapsed"/>
@@ -59,21 +59,21 @@
                         Click="OnClickSchoolsPagesPress" ClickMode="Press" />
                 <Button x:Name="btnSchoolsPagesLoad" Content="Schools Pages" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
                         Click="OnClickSchoolsPagesLoad" ClickMode="Press" Visibility="Collapsed"/>
-				<Button x:Name="btnPerformance" Content="Performance" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
+                <Button x:Name="btnPerformance" Content="Performance" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
                          Click="OnClickPerformancePress" ClickMode="Press"/>
                 <Button x:Name="btnPerformanceLoad" Content="Performance" Height="48" Width="196" Margin="18,18,18,18" Background="{x:Null}" Foreground="#FFFBEBEB"
                          Click="OnClickPerformanceLoad" ClickMode="Press"  Visibility="Collapsed"/>
-                        
-                        
-			</StackPanel>
-		</Border>
-		<StackPanel  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" >
-			<TextBlock x:Name="textPageTitle" Text="   WPF Title" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"  Background="White"  FontSize="36"/>
+
+
+            </StackPanel>
+        </Border>
+        <StackPanel  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Orientation="Vertical" >
+            <TextBlock x:Name="textPageTitle" Text="   WPF Title" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"  Background="White"  FontSize="36"/>
             <Canvas x:Name="HtmlCanvas" Visibility="Collapsed" >
                 <Frame  x:Name="HtmlFrame" Width="1020" Height="694" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Canvas>
             <TextBlock x:Name="textPageSubTitle" Text="" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"  Background="White"  FontSize="36" Visibility="Collapsed"/>
-			<TextBlock x:Name="textPageText" Text=" This is some text for content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New"/>
+            <TextBlock x:Name="textPageText" Text=" This is some text for content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New"/>
             <TextBlock x:Name="Spacer" Text="" Visibility="Hidden"  FontSize="24" FontFamily="Courier New"/>
             <Grid x:Name="NextPrevGrid" Visibility="Collapsed" >
                 <Grid.ColumnDefinitions>
@@ -82,25 +82,11 @@
                 </Grid.ColumnDefinitions>
                 <Button x:Name="btnNext" Content="Next" Height="26" Width="50" Margin="32,0,0,0" Background="LightGray" Foreground="Black"
                         Click="OnClickNextPress" ClickMode="Press" HorizontalAlignment="Left"/>
-				<Button x:Name="btnPrev" Content="Prev" Height="26" Width="50" Margin="-15,0,0,0" Background="LightGray" Foreground="Black"
+                <Button x:Name="btnPrev" Content="Prev" Height="26" Width="50" Margin="-15,0,0,0" Background="LightGray" Foreground="Black"
                         Click="OnClickPrevPress" ClickMode="Press" Grid.Column="1" HorizontalAlignment="Left"/>
             </Grid>
             <TextBlock x:Name="textPageHeader" Text=" This is header content" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Background="Black"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList1" Text=" This is List 1 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList2" Text=" This is List 2 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList3" Text=" This is List 3 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList4" Text=" This is List 4 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList5" Text=" This is List 5 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList6" Text=" This is List 6 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-   	        <TextBlock x:Name="textPageList7" Text=" This is List 7 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList8" Text=" This is List 8 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList9" Text=" This is List 9 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList10" Text=" This is List 10 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList11" Text=" This is List 11 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList12" Text=" This is List 12 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList13" Text=" This is List 13 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList14" Text=" This is List 14 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="White"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
-            <TextBlock x:Name="textPageList15" Text=" This is List 15 content" TextWrapping="Wrap" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="36"/>
+            <ListBox x:Name="listBox" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left" Background="LightGray"  FontSize="24" FontFamily="Courier New" Visibility="Visible" Margin="32,0,40,0" Width="1000" Height="580"/>
         </StackPanel>
-	</Grid>
+    </Grid>
 </Window>

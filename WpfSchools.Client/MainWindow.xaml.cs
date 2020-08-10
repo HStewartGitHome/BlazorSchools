@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections;
 using System.IO;
 using System.Windows;
 using System.Windows.Threading;
@@ -251,151 +252,29 @@ namespace WpfSchools.Client
             int count = 0;
             if (Data.HasContent == true)
             {
+                listBox.ItemsSource = null;
+
+                ArrayList arrayList = new ArrayList();
+
                 count = Data.Content.Length;
                 for (int index = 0; index < count; index++)
                 {
-                    if (index == 0)
-                    {
-                        textPageList1.Text = Data.Content[index];
-                        textPageList1.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 1)
-                    {
-                        textPageList2.Text = Data.Content[index];
-                        textPageList2.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 2)
-                    {
-                        textPageList3.Text = Data.Content[index];
-                        textPageList3.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 3)
-                    {
-                        textPageList4.Text = Data.Content[index];
-                        textPageList4.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 4)
-                    {
-                        textPageList5.Text = Data.Content[index];
-                        textPageList5.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 5)
-                    {
-                        textPageList6.Text = Data.Content[index];
-                        textPageList6.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 6)
-                    {
-                        textPageList7.Text = Data.Content[index];
-                        textPageList7.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 7)
-                    {
-                        textPageList8.Text = Data.Content[index];
-                        textPageList8.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 8)
-                    {
-                        textPageList9.Text = Data.Content[index];
-                        textPageList9.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 9)
-                    {
-                        textPageList10.Text = Data.Content[index];
-                        textPageList10.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 10)
-                    {
-                        textPageList11.Text = Data.Content[index];
-                        textPageList11.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 11)
-                    {
-                        textPageList12.Text = Data.Content[index];
-                        textPageList12.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 12)
-                    {
-                        textPageList13.Text = Data.Content[index];
-                        textPageList13.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 13)
-                    {
-                        textPageList14.Text = Data.Content[index];
-                        textPageList14.FontSize = Data.ContentFontSize;
-                    }
-                    if (index == 14)
-                    {
-                        textPageList15.Text = Data.Content[index];
-                        textPageList15.FontSize = Data.ContentFontSize;
-                    }
+                    arrayList.Add(Data.Content[index]);
                 }
+                listBox.ItemsSource = arrayList;
             }
         }
 
         private void EnableListItems(int count)
         {
-
-            if (count > 0)
-                textPageList1.Visibility = Visibility.Visible;
+            if (count > 0 )
+                listBox.Visibility = Visibility.Visible;
             else
-                textPageList1.Visibility = Visibility.Collapsed;
-            if (count > 1)
-                textPageList2.Visibility = Visibility.Visible;
-            else
-                textPageList2.Visibility = Visibility.Collapsed;
-            if (count > 2)
-                textPageList3.Visibility = Visibility.Visible;
-            else
-                textPageList3.Visibility = Visibility.Collapsed;
-            if (count > 3)
-                textPageList4.Visibility = Visibility.Visible;
-            else
-                textPageList4.Visibility = Visibility.Collapsed;
-            if (count > 4)
-                textPageList5.Visibility = Visibility.Visible;
-            else
-                textPageList5.Visibility = Visibility.Collapsed;
-            if (count > 5)
-                textPageList6.Visibility = Visibility.Visible;
-            else
-                textPageList6.Visibility = Visibility.Collapsed;
-            if (count > 6)
-                textPageList7.Visibility = Visibility.Visible;
-            else
-                textPageList7.Visibility = Visibility.Collapsed;
-            if (count > 7)
-                textPageList8.Visibility = Visibility.Visible;
-            else
-                textPageList8.Visibility = Visibility.Collapsed;
-            if (count > 8)
-                textPageList9.Visibility = Visibility.Visible;
-            else
-                textPageList9.Visibility = Visibility.Collapsed;
-            if (count > 9)
-                textPageList10.Visibility = Visibility.Visible;
-            else
-                textPageList10.Visibility = Visibility.Collapsed;
-            if (count > 10)
-                textPageList11.Visibility = Visibility.Visible;
-            else
-                textPageList11.Visibility = Visibility.Collapsed;
-            if (count > 11)
-                textPageList12.Visibility = Visibility.Visible;
-            else
-                textPageList12.Visibility = Visibility.Collapsed;
-            if (count > 12)
-                textPageList13.Visibility = Visibility.Visible;
-            else
-                textPageList13.Visibility = Visibility.Collapsed;
-            if (count > 13)
-                textPageList14.Visibility = Visibility.Visible;
-            else
-                textPageList14.Visibility = Visibility.Collapsed;
-            if (count > 14)
-                textPageList15.Visibility = Visibility.Visible;
-            else
-                textPageList15.Visibility = Visibility.Collapsed;
+            {
+                listBox.ItemsSource = null;
+                listBox.Visibility = Visibility.Collapsed;
+            }
+ 
         }
 
         private void ShowHtml(bool show, string str)

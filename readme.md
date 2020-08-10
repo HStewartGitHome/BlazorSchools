@@ -61,6 +61,12 @@ GitHub
 -   Blazor web-assembly progressive app supported but needs to be test on other
     devices
 
+Updated: 08/09/2020
+
+Change WPF to support Listbox to test to see if Blazor performance issue was
+directly related to html page loading and this has been verify as true. Loading
+of WPF even with 5000+ items is almost instant.
+
 Database services
 =================
 
@@ -131,4 +137,4 @@ not as pretty, but I am sure with some work it could be. It uses fixed font for
 spacing. Implementation wise, it uses the same Http.GetFromJsonAsync calls that
 Blazor apps uses. The following is example of screen
 
-![](media/593986a4c77e0b002c956383ef97448d.png)
+![](media/2b47adb65e752ccf844b040fa973bf30.png)

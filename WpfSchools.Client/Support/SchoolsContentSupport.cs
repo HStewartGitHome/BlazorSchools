@@ -66,8 +66,6 @@ namespace WpfSchools.Client.Support
 
             Data.HasContent = true;
             int count = currentSchools.schools.Length;
-            if (count > 16)
-                count = 16;
             Data.Content = new string[count];
             Data.ContentFontSize = 18;
 
