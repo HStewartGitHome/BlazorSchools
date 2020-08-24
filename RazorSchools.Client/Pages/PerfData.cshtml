@@ -1,0 +1,97 @@
+﻿@page
+@model RazorSchools.Client.Pages.PerfDataModel
+@{
+    ViewData["Title"]= "School API Performance Data";
+}
+
+
+<h3>School API Performance Data</h3>
+
+@if (string.IsNullOrWhiteSpace(Model.errorString) == false)
+{
+<div class="h2">@Model.errorString</div> }
+else if (Model.currentPerf is null)
+{
+<div class="h4">Loading...</div> }
+else
+{
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Performance</th>
+            <th>Update</th>
+            <th>Read</th>
+            <th>Read2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Initialize Performance</td>
+            <td></td>
+            <td>@Model.currentPerf.InitPerformance</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Json Performance</td>
+            <td></td>
+            <td>@Model.currentPerf.JsonPerformance</td>
+            <td>@Model.currentPerf.JsonPerformance2</td>
+        </tr>
+        <tr>
+            <td>Dapper Performance</td>
+            <td>@Model.currentPerf.DapperUpdatePerformance</td>
+            <td>@Model.currentPerf.DapperPerformance</td>
+            <td>@Model.currentPerf.DapperPerformance2</td>
+        </tr>
+        <tr>
+            <td>Entity Framework Performance</td>
+            <td>@Model.currentPerf.EFUpdatePerformance</td>
+            <td>@Model.currentPerf.EFPerformance</td>
+            <td>@Model.currentPerf.EFPerformance2</td>
+        </tr>
+        <tr>
+            <td>Simulated Performance</td>
+            <td>@Model.currentPerf.SimUpdatePerformance</td>
+            <td>@Model.currentPerf.SimPerformance</td>
+            <td>@Model.currentPerf.SimPerformance2</td>
+        </tr>
+        <tr>
+            <td>Use Simulated</td>
+            <td></td>
+            <td>@Model.currentPerf.UseSIM</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Use Dapper Framework</td>
+            <td></td>
+            <td>@Model.currentPerf.UseDapper</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Use Entity Framework</td>
+            <td></td>
+            <td>@Model.currentPerf.UseEF</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Allow Dapper Framework</td>
+            <td></td>
+            <td>@Model.currentPerf.AllowDapper</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Allow Entity Framework</td>
+            <td></td>
+            <td>@Model.currentPerf.AllowEF</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Max Records</td>
+            <td>@Model.currentPerf.MaxPage</td>
+            <td>@Model.currentPerf.Records</td>
+            <td></td>
+        </tr>
+
+    </tbody>
+</table>
+}

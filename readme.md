@@ -67,6 +67,11 @@ Change WPF to support Listbox to test to see if Blazor performance issue was
 directly related to html page loading and this has been verify as true. Loading
 of WPF even with 5000+ items is almost instant.
 
+Updated: 08/23/2020
+
+Added ASP.Net Razor example with same API as WPF with Performance Data and
+Single Page support.
+
 Database services
 =================
 

@@ -1,0 +1,44 @@
+﻿@page
+@model RazorSchools.Client.Pages.SchoolDataModel
+@{
+    ViewData["Title"] = "School API Data";
+}
+
+<h3>School API Data</h3>
+
+@if (string.IsNullOrWhiteSpace(Model.errorString) == false)
+{
+    <div class="h2">@Model.errorString</div> }
+else if (@Model.currentSchools == null)
+{
+    <div class="h4">Loading...</div> }
+else
+{
+    <p>
+        Start @Model.currentSchools.CurrentIndex  of @Model.currentSchools.MaxIndex
+    </p>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var s in Model.currentSchools.schools)
+            {
+                <tr>
+                    <td>@s.name</td>
+                    <td>@s.street</td>
+                    <td>@s.city</td>
+                    <td>@s.state</td>
+                    <td>@s.zip</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
