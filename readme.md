@@ -162,7 +162,7 @@ software can work together with new software. 
 
 There is also a ASP.NET Razor client provided which use the same API and similar
 Razor pages in .cshtml format. This project seam to have better performance than
-Blazor application. output –I t uses the same Http.GetFromJsonAsync calls that
+Blazor application. output – It uses the same Http.GetFromJsonAsync calls that
 Blazor apps uses. The following is example of screen
 
 ![](media/8bafb93eb4ab39a2e4c3bd7c7e18edfd.png)
