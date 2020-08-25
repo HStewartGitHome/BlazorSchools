@@ -147,6 +147,19 @@ apps uses. The following is example of screen
 ASP.NET Razor Client
 ====================
 
+I have updated my Blazor Schools GitHub to include a ASP.Net Razor client
+besides Blazor and WPF client, All clients use the same service which is using
+the Blazor Web assembly with ASP.Net Core host as service.
+
+One note on the use of Javascript in html pages.  When creating this ASP.Net
+Razor addition, I wanted to make sure that Javascript was not used during the
+changes.  This became a challenge with the need for Page buttons on the
+screen.  For me, I believe that the use of Javascript in html violates
+Separation of code from user interface.   Not only that is that increases
+security concerns on the client.  I think Microsoft took significant efforts to
+improve this with Microsoft Blazor.  But this update shows the older legacy
+software can work together with new software. 
+
 There is also a ASP.NET Razor client provided which use the same API and similar
 Razor pages in .cshtml format. This project seam to have better performance than
 Blazor application. output –I t uses the same Http.GetFromJsonAsync calls that
