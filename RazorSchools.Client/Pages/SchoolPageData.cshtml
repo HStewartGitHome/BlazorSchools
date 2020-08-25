@@ -1,5 +1,5 @@
 ﻿@page
-@model RazorSchools.Client.Pages.SchoolDataModel
+@model RazorSchools.Client.Pages.SchoolPageDataModel
 @{
     ViewData["Title"] = "School API Data";
 }
@@ -9,7 +9,7 @@
 @if (string.IsNullOrWhiteSpace(Model.ErrorString) == false)
 {
     <div class="h2">@Model.ErrorString</div> }
-else if (@Model.CurrentSchools == null)
+else if (Model.CurrentSchools is null)
 {
     <div class="h4">Loading...</div> }
 else
@@ -17,6 +17,11 @@ else
     <p>
         Start @Model.CurrentSchools.CurrentIndex  of @Model.CurrentSchools.MaxIndex
     </p>
+
+    <form>
+        <button class="btn btn-primary" name="Check" value="Next" asp-action="onCheck">   Next   </button>
+        <button class="btn btn-primary" name="Check" value="Prev" asp-action="onCheck">   Prev   </button>
+    </form>
 
     <table class="table table-striped">
         <thead class="thead-dark">

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -14,14 +15,14 @@ namespace RazorSchools.Client.Pages
 {
     public class PerfDataModel : PageContentSupport
     {
-        public Performance currentPerf { get; set; }
-        public string errorString { get; set; }
+        public Performance CurrentPerf { get; set; }
+        public string ErrorString { get; set; }
 
         public string HtmlClientApi { get; set; }
 
         public PerfDataModel(IConfiguration configuration)
         {
-            currentPerf = null;
+            CurrentPerf = null;
             HtmlClientApi = configuration["htmlclient"];
 
         }
@@ -31,13 +32,13 @@ namespace RazorSchools.Client.Pages
             try
             {
                 HttpClient http = GetHttplClient(HtmlClientApi);
-                currentPerf = await http.GetFromJsonAsync<Performance>("SchoolPerformance");
+                CurrentPerf = await http.GetFromJsonAsync<Performance>("SchoolPerformance");
 
-                errorString = null;
+                ErrorString = null;
             }
-            catch (Exception ex)
+            catch (IOException ex)
             {
-                errorString = $"There was an error getting our schools API performance data: { ex.Message }";
+                ErrorString = $"There was an error getting our schools API performance data: { ex.Message }";
             }
         }
 

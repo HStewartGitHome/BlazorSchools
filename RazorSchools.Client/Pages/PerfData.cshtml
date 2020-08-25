@@ -7,10 +7,10 @@
 
 <h3>School API Performance Data</h3>
 
-@if (string.IsNullOrWhiteSpace(Model.errorString) == false)
+@if (string.IsNullOrWhiteSpace(Model.ErrorString) == false)
 {
-<div class="h2">@Model.errorString</div> }
-else if (Model.currentPerf is null)
+<div class="h2">@Model.ErrorString</div> }
+else if (Model.CurrentPerf is null)
 {
 <div class="h4">Loading...</div> }
 else
@@ -28,67 +28,67 @@ else
         <tr>
             <td>Initialize Performance</td>
             <td></td>
-            <td>@Model.currentPerf.InitPerformance</td>
+            <td>@Model.CurrentPerf.InitPerformance</td>
             <td></td>
         </tr>
         <tr>
             <td>Json Performance</td>
             <td></td>
-            <td>@Model.currentPerf.JsonPerformance</td>
-            <td>@Model.currentPerf.JsonPerformance2</td>
+            <td>@Model.CurrentPerf.JsonPerformance</td>
+            <td>@Model.CurrentPerf.JsonPerformance2</td>
         </tr>
         <tr>
             <td>Dapper Performance</td>
-            <td>@Model.currentPerf.DapperUpdatePerformance</td>
-            <td>@Model.currentPerf.DapperPerformance</td>
-            <td>@Model.currentPerf.DapperPerformance2</td>
+            <td>@Model.CurrentPerf.DapperUpdatePerformance</td>
+            <td>@Model.CurrentPerf.DapperPerformance</td>
+            <td>@Model.CurrentPerf.DapperPerformance2</td>
         </tr>
         <tr>
             <td>Entity Framework Performance</td>
-            <td>@Model.currentPerf.EFUpdatePerformance</td>
-            <td>@Model.currentPerf.EFPerformance</td>
-            <td>@Model.currentPerf.EFPerformance2</td>
+            <td>@Model.CurrentPerf.EFUpdatePerformance</td>
+            <td>@Model.CurrentPerf.EFPerformance</td>
+            <td>@Model.CurrentPerf.EFPerformance2</td>
         </tr>
         <tr>
             <td>Simulated Performance</td>
-            <td>@Model.currentPerf.SimUpdatePerformance</td>
-            <td>@Model.currentPerf.SimPerformance</td>
-            <td>@Model.currentPerf.SimPerformance2</td>
+            <td>@Model.CurrentPerf.SimUpdatePerformance</td>
+            <td>@Model.CurrentPerf.SimPerformance</td>
+            <td>@Model.CurrentPerf.SimPerformance2</td>
         </tr>
         <tr>
             <td>Use Simulated</td>
             <td></td>
-            <td>@Model.currentPerf.UseSIM</td>
+            <td>@Model.CurrentPerf.UseSIM</td>
             <td></td>
         </tr>
         <tr>
             <td>Use Dapper Framework</td>
             <td></td>
-            <td>@Model.currentPerf.UseDapper</td>
+            <td>@Model.CurrentPerf.UseDapper</td>
             <td></td>
         </tr>
         <tr>
             <td>Use Entity Framework</td>
             <td></td>
-            <td>@Model.currentPerf.UseEF</td>
+            <td>@Model.CurrentPerf.UseEF</td>
             <td></td>
         </tr>
         <tr>
             <td>Allow Dapper Framework</td>
             <td></td>
-            <td>@Model.currentPerf.AllowDapper</td>
+            <td>@Model.CurrentPerf.AllowDapper</td>
             <td></td>
         </tr>
         <tr>
             <td>Allow Entity Framework</td>
             <td></td>
-            <td>@Model.currentPerf.AllowEF</td>
+            <td>@Model.CurrentPerf.AllowEF</td>
             <td></td>
         </tr>
         <tr>
             <td>Max Records</td>
-            <td>@Model.currentPerf.MaxPage</td>
-            <td>@Model.currentPerf.Records</td>
+            <td>@Model.CurrentPerf.MaxPage</td>
+            <td>@Model.CurrentPerf.Records</td>
             <td></td>
         </tr>
 

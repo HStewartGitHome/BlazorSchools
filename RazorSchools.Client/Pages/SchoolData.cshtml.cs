@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -13,8 +14,8 @@ namespace RazorSchools.Client.Pages
 {
     public class SchoolDataModel : PageContentSupport
     {
-        public Schools currentSchools { get; set; }
-        public string errorString { get; set; }
+        public Schools CurrentSchools { get; set; }
+        public string ErrorString { get; set; }
 
         public string HtmlClientApi { get; set; }
 
@@ -28,13 +29,13 @@ namespace RazorSchools.Client.Pages
             try
             {
                 HttpClient http = GetHttplClient(HtmlClientApi);
-                currentSchools = await http.GetFromJsonAsync<Schools>("SchoolModel");
+                CurrentSchools = await http.GetFromJsonAsync<Schools>("SchoolModel");
 
-                errorString = null;
+                ErrorString = null;
             }
-            catch (Exception ex)
+            catch (IOException ex)
             {
-                errorString = $"There was an error getting our schools: { ex.Message }";
+                ErrorString = $"There was an error getting our schools: { ex.Message }";
             }
         }
     }

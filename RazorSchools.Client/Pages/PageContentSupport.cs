@@ -10,11 +10,10 @@ namespace RazorSchools.Client.Pages
     {
 
 
-        public HttpClient GetHttplClient(string str)
+        public static HttpClient GetHttplClient(string str)
         {
-            HttpClient client = null;
             ClientFactory factory = new ClientFactory();
-            client = factory.GetHttplClient(str);
+            HttpClient client = factory.GetHttplClient(str);
             return client;
 
         }
