@@ -70,7 +70,7 @@ of WPF even with 5000+ items is almost instant.
 Updated: 08/23/2020
 
 Added ASP.Net Razor example with same API as WPF with Performance Data and
-Single Page support.
+Single and Multiple Page support.
 
 Database services
 =================
@@ -138,8 +138,18 @@ WPF Client
 There is also a WPF client provide which I designed to appear to be like Blazor
 application with some minor difference. This project is not like the one I note
 that use web output – but outputs screen using XAML controls. Table output is
-not as pretty, but I am sure with some work it could be. It uses fixed font for
-spacing. Implementation wise, it uses the same Http.GetFromJsonAsync calls that
-Blazor apps uses. The following is example of screen
+not same but was improved with Listbox.. It uses fixed font for spacing.
+Implementation wise, it uses the same Http.GetFromJsonAsync calls that Blazor
+apps uses. The following is example of screen
 
 ![](media/2b47adb65e752ccf844b040fa973bf30.png)
+
+ASP.NET Razor Client
+====================
+
+There is also a ASP.NET Razor client provided which use the same API and similar
+Razor pages in .cshtml format. This project seam to have better performance than
+Blazor application. output –I t uses the same Http.GetFromJsonAsync calls that
+Blazor apps uses. The following is example of screen
+
+![](media/8bafb93eb4ab39a2e4c3bd7c7e18edfd.png)
