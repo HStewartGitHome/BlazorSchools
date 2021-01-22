@@ -13,7 +13,7 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Databa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfSchools.Client", "WpfSchools.Client\WpfSchools.Client.csproj", "{12AE68C8-A4C2-4A0A-92BB-8948566E1B5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorSchools.Client", "RazorSchools.Client\RazorSchools.Client.csproj", "{1C60F4E8-62CB-46F8-B46E-4E2C04E74361}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorSchools.Client", "RazorSchools.Client\RazorSchools.Client.csproj", "{1C60F4E8-62CB-46F8-B46E-4E2C04E74361}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

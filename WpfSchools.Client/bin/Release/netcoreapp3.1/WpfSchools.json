@@ -1,0 +1,11 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "htmlclient": "https://localhost:5001/",
+  "AboutURL": "https://docs.microsoft.com/en-us/dotnet/framework/wpf/introduction-to-wpf"
+}

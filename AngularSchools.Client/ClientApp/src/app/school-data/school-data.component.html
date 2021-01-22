@@ -1,0 +1,26 @@
+<h1 id="tableLabel">School Data in Angular</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!schools"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="schools">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let school of schools">
+      <td>{{school.name}}</td>
+      <td>{{school.street}}</td>
+      <td>{{school.city}}</td>
+      <td>{{school.state}}</td>
+      <td>{{school.zip}}</td>
+    </tr>
+  </tbody>
+</table>

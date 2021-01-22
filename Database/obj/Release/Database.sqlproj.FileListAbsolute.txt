@@ -1,0 +1,9 @@
+C:\SRC\BlazorSchools-master\Database\bin\Release\Database.dacpac
+C:\SRC\BlazorSchools-master\Database\bin\Release\Database.dll
+C:\SRC\BlazorSchools-master\Database\bin\Release\Database.pdb
+C:\SRC\BlazorSchools-master\Database\obj\Release\Model.xml
+C:\SRC\BlazorSchools-master\Database\obj\Release\refactor.xml
+C:\SRC\BlazorSchools-master\Database\obj\Release\postdeploy.sql
+C:\SRC\BlazorSchools-master\Database\obj\Release\predeploy.sql
+C:\SRC\BlazorSchools-master\Database\obj\Release\Database.dll
+C:\SRC\BlazorSchools-master\Database\obj\Release\Database.pdb

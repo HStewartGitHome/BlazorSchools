@@ -1,0 +1,84 @@
+<h1 id="tableLabel">School Performance in Angular</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!performances"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="performances">
+  <thead>
+    <tr>
+      <th>Performance</th>
+      <th>Update</th>
+      <th>Read</th>
+      <th>Read2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let performance of performances">
+      <td>Initialize Performance</td>
+      <td></td>
+      <td>{{performance.initPerformance}}</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Json Performance</td>
+      <td></td>
+      <td>{{performance.jsonPerformance}}</td>
+      <td>{{performance.jsonPerformance2}}</td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Dapper Performance</td>
+      <td>{{performance.dapperUpdatePerformance}}</td>
+      <td>{{performance.dapperPerformance}}</td>
+      <td>{{performance.dapperPerformance2}}</td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Entity Framework Performance</td>
+      <td>{{performance.efUpdatePerformance}}</td>
+      <td>{{performance.efPerformance}}</td>
+      <td>{{performance.efPerformance2}}</td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Simulated Performance</td>
+      <td>{{performance.simUpdatePerformance}}</td>
+      <td>{{performance.simPerformance}}</td>
+      <td>{{performance.simPerformance2}}</td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Use Simulated</td>
+      <td></td>
+      <td>{{performance.useSIM}}</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Use Dapper Framework</td>
+      <td></td>
+      <td>{{performance.useDapper}}</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Use Entity Framework</td>
+      <td></td>
+      <td>{{performance.useEF}}</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Allow Dapper Framework</td>
+      <td></td>
+      <td>{{performance.allowDapper}}</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Allow Entity Framework</td>
+      <td></td>
+      <td>{{performance.allowEF}}</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let performance of performances">
+      <td>Max Records</td>
+      <td>{{performance.maxPage}}</td>
+      <td>{{performance.records}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
