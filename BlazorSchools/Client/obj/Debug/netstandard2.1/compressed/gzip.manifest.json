@@ -1,7 +1,7 @@
 {
   "FilesToCompress": [
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\rHmK7zsMb3EYmDByQbTmAoKC3hOelLbVDHNeIwf4r-8=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\MH6CtwCBogr0Ty-Isg1-7lyWmpXeifP-aQqizB4kGjA=.hash",
       "Source": "C:\\SRC\\BlazorSchools-master\\BlazorSchools\\Client\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\BlazorSchools.Client.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/BlazorSchools.Client.dll.gz"
     },
@@ -216,7 +216,7 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.AspNetCore.Components.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\MI88ivnuP94bVbv3aknET2Th_AeX8psaQNFl6rnWbTo=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\os9MvB3XDbeKJjIZeVbi1JYh9gHDd2vH7nA-MwE6-yQ=.hash",
       "Source": "C:\\SRC\\BlazorSchools-master\\BlazorSchools\\Client\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\BlazorSchools.Shared.dll",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/BlazorSchools.Shared.dll.gz"
     },
@@ -271,12 +271,12 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/Microsoft.JSInterop.WebAssembly.dll.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\dYOUSUIrmpNmrEuWaFZg2NbrqFbIoCXcnM_SGEmRkbE=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\bK4uSBOZ7XsdmZ30AdxPw3_SBLYm4syrAKKRg7mrhCs=.hash",
       "Source": "C:\\SRC\\BlazorSchools-master\\BlazorSchools\\Client\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\BlazorSchools.Client.pdb",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/BlazorSchools.Client.pdb.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\f1GgCvWWiz-u0mBjSDtv7K6xYXjC6TEDwoFn6X2H_rU=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\AUks5_NIFR0YWYgsT0LYIFMHU9KdEDmvV1BTSN0djU8=.hash",
       "Source": "C:\\SRC\\BlazorSchools-master\\BlazorSchools\\Client\\obj\\Debug\\netstandard2.1\\blazor\\unlinked\\BlazorSchools.Shared.pdb",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/_bin\/BlazorSchools.Shared.pdb.gz"
     },
@@ -301,12 +301,12 @@
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.webassembly.js.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\rOwzL-l2BZVSdWULgPnXBiXAZ5qC23XomZEf-Su6uH8=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\yQKn7tgACd3RnENsNJoijsxAkT35gYY8MefQU8Qqbmc=.hash",
       "Source": "C:\\SRC\\BlazorSchools-master\\BlazorSchools\\Client\\obj\\Debug\\netstandard2.1\\blazor\\blazor.boot.json",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\_framework\/blazor.boot.json.gz"
     },
     {
-      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\zGnyzPb5-hyU_96aC-RhcjHbOe6tRej8bdYBLjA1pLM=.hash",
+      "InputSource": "obj\\Debug\\netstandard2.1\\integrity\\FjMlTgOVKrlGw-Ve5uiCi3VUjgrWPcekvEJIga52C5k=.hash",
       "Source": "C:\\SRC\\BlazorSchools-master\\BlazorSchools\\Client\\obj\\Debug\\netstandard2.1\\blazor\\service-worker-assets.js",
       "Target": "obj\\Debug\\netstandard2.1\\compressed\\service-worker-assets.js.gz"
     }

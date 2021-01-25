@@ -2,6 +2,7 @@
 {
     public class Performance
     {
+        public int Id { get; set; }
         public int InitPerformance { get; set; }
         public int JsonPerformance { get; set; }
         public int DapperPerformance { get; set; }
