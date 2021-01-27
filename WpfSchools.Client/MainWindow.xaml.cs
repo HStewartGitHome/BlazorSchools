@@ -32,8 +32,6 @@ namespace WpfSchools.Client
             ShowHome();
         }
 
-
-
         public void OnClickHomePress(object sender, RoutedEventArgs e)
         {
             ShowHome();
@@ -107,11 +105,9 @@ namespace WpfSchools.Client
                 textPageText.Text = "   Exception loading School API Data with " + ex.Message;
                 textPageText.Visibility = Visibility.Visible;
 
-
                 textPageHeader.Visibility = Visibility.Collapsed;
                 EnableListItems(0);
             }
-
         }
 
         public void OnClickSchoolsPagesPress(object sender, RoutedEventArgs e)
@@ -137,7 +133,6 @@ namespace WpfSchools.Client
 
         public void OnClickPerformanceLoad(object sender, RoutedEventArgs e)
         {
-
             PerformancePageContentSupport Support = new PerformancePageContentSupport(_configuration);
 
             try
@@ -161,11 +156,9 @@ namespace WpfSchools.Client
                 textPageText.Text = "   Exception loading School API Performance Data with " + ex.Message;
                 textPageText.Visibility = Visibility.Visible;
 
-
                 textPageHeader.Visibility = Visibility.Collapsed;
                 EnableListItems(0);
             }
-
         }
 
         public void ShowPagedContent(int nextIndex)
@@ -195,7 +188,6 @@ namespace WpfSchools.Client
                 textPageTitle.Text = "   School API Data Exception";
                 textPageText.Text = "   Exception loading School API Data with " + ex.Message;
                 textPageText.Visibility = Visibility.Visible;
-
 
                 textPageHeader.Visibility = Visibility.Collapsed;
                 EnableListItems(0);
@@ -227,7 +219,6 @@ namespace WpfSchools.Client
             textPageHeader.Visibility = Visibility.Collapsed;
             ShowPagedButtons(false);
             EnableListItems(0);
-
         }
 
         private void ShowPagedButtons(bool show)
@@ -249,7 +240,7 @@ namespace WpfSchools.Client
             else
                 textPageHeader.Visibility = Visibility.Collapsed;
 
-            int count = 0;
+            int count;
             if (Data.HasContent == true)
             {
                 listBox.ItemsSource = null;
@@ -267,14 +258,13 @@ namespace WpfSchools.Client
 
         private void EnableListItems(int count)
         {
-            if (count > 0 )
+            if (count > 0)
                 listBox.Visibility = Visibility.Visible;
             else
             {
                 listBox.ItemsSource = null;
                 listBox.Visibility = Visibility.Collapsed;
             }
- 
         }
 
         private void ShowHtml(bool show, string str)
@@ -288,7 +278,7 @@ namespace WpfSchools.Client
                 HtmlCanvas.Visibility = Visibility.Collapsed;
         }
 
-        private void ProcessUITasks()
+        private static void ProcessUITasks()
         {
             DispatcherFrame frame = new DispatcherFrame();
             Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, new DispatcherOperationCallback(delegate (object parameter)

@@ -1,13 +1,16 @@
-using BlazorSchools.Server.Data;
-using BlazorSchools.Server.Data.EnitityFramework;
-using BlazorSchools.Server.Data.Sim;
-using BlazorSchools.Server.DataAccess;
+using BlazorSchools.Shared.Data.Sim;
+using BlazorSchools.Shared.Data;
+using BlazorSchools.Shared.DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Linq;
+using BlazorSchools.Shared.Data.EnitityFramework;
 
 namespace BlazorSchools.Server
 {
@@ -25,9 +28,7 @@ namespace BlazorSchools.Server
                 if (allowDapper != "1")
                     configuration["UseSIM"] = "1";
             }
-
-
-
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -62,7 +63,6 @@ namespace BlazorSchools.Server
             {
                 app.UseDeveloperExceptionPage();
                 app.UseWebAssemblyDebugging();
-
             }
             else
             {

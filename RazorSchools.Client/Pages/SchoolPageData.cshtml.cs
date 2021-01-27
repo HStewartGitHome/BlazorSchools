@@ -1,4 +1,4 @@
-using BlazorSchools.Shared;
+using BlazorSchools.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;

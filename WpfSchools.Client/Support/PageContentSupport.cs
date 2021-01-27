@@ -1,4 +1,4 @@
-﻿using BlazorSchools.Shared;
+﻿using BlazorSchools.Shared.Services;
 using System.Collections.Generic;
 using System.Net.Http;
 using WpfSchools.Client.Models;
@@ -7,8 +7,6 @@ namespace WpfSchools.Client.Support
 {
     public class PageContentSupport
     {
-
-
         public List<IFieldModel> Fields { get; set; }
 
         public void AddField(string title, int len)
@@ -16,9 +14,11 @@ namespace WpfSchools.Client.Support
             if (Fields == null)
                 Fields = new List<IFieldModel>();
 
-            IFieldModel field = new FieldModel();
-            field.Title = title;
-            field.Size = len;
+            IFieldModel field = new FieldModel
+            {
+                Title = title,
+                Size = len
+            };
             Fields.Add(field);
         }
 
@@ -64,27 +64,10 @@ namespace WpfSchools.Client.Support
             return str;
         }
 
-        public HttpClient GetHttplClient(string str)
+        public static HttpClient GetHttplClient(string str)
         {
-            HttpClient client = null;
-            ClientFactory factory = new ClientFactory();
-            client = factory.GetHttplClient(str);
+            HttpClient client = ClientFactory.GetHttplClient(str);
             return client;
-
         }
-
-
-        public string GetSettingValue(string setting)
-        {
-            string value = "";
-
-
-
-
-            return value;
-        }
-
-
-
     }
 }

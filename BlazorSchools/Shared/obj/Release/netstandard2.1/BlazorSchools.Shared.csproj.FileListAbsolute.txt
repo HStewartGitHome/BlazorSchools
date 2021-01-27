@@ -1,9 +1,0 @@
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\bin\Release\netstandard2.1\BlazorSchools.Shared.deps.json
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\bin\Release\netstandard2.1\BlazorSchools.Shared.dll
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\bin\Release\netstandard2.1\BlazorSchools.Shared.pdb
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\obj\Release\netstandard2.1\BlazorSchools.Shared.csprojAssemblyReference.cache
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\obj\Release\netstandard2.1\BlazorSchools.Shared.AssemblyInfoInputs.cache
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\obj\Release\netstandard2.1\BlazorSchools.Shared.AssemblyInfo.cs
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\obj\Release\netstandard2.1\BlazorSchools.Shared.csproj.CoreCompileInputs.cache
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\obj\Release\netstandard2.1\BlazorSchools.Shared.dll
-C:\SRC\BlazorSchools-master\BlazorSchools\Shared\obj\Release\netstandard2.1\BlazorSchools.Shared.pdb

@@ -70,15 +70,21 @@ Updated: 08/23/2020
 Added ASP.Net Razor example with same API as WPF with Performance Data and
 Single and Multiple Page support.
 
-Updated: 01/22/2022
+Updated: 01/22/2021
 
 Added ASP.Net Angular example with same API as WPF with Performance Data and
 Single Page support.
 
-Updated: 01/25/2022
+Updated: 01/25/2021
 
 Added ASP.Net Reactr example with same API as WPF with Performance Data and
 Single Page support.
+
+Updated: 01/27/2021
+
+Updated projects to use .NET 5.0 set update.md for details on process.
+
+Mode data and data access from BlazorSchools.Server to BlazorSchools.Shared
 
 Database services
 =================
@@ -189,6 +195,10 @@ The following is example of same performance screen.
 
 ![Table Description automatically generated](media/1c76210adf2116d41f32998d3ddda516.jpg)
 
+Table Description automatically generated
+
+Table Description automatically generated
+
 ASP.NET React Client
 ====================
 
@@ -202,3 +212,7 @@ made two solutions one with and one with client app supported applications.
 The following is example of same performance screen.
 
 ![Table Description automatically generated](media/d0c1902d66faf6acdc648412ea0c749c.jpg)
+
+Table Description automatically generated
+
+Table Description automatically generated

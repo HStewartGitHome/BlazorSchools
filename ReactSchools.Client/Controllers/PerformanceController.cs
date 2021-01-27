@@ -1,14 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BlazorSchools.Shared;
+﻿using BlazorSchools.Shared.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System.Net.Http;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace ReactSchools.Client.Controllers
 {
@@ -16,18 +13,12 @@ namespace ReactSchools.Client.Controllers
     [Route("[controller]")]
     public class PerformanceController : CommonController
     {
-     
-        private readonly ILogger<PerformanceController> _logger;
-        private readonly IConfiguration _configuration;
         public string HtmlClientApi { get; set; }
         public string ErrorString { get; set; }
 
-        public PerformanceController(ILogger<PerformanceController> logger,
-                                  IConfiguration configuration)
+        public PerformanceController(IConfiguration configuration)
         {
-            _logger = logger;
-            _configuration = configuration;
-
+           
             HtmlClientApi = configuration["htmlclient"];
         }
 

@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BlazorSchools.Shared;
+﻿using BlazorSchools.Shared;
+using BlazorSchools.Shared.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System.Net.Http;
+using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace AngularSchools.Client.Controllers
 {
@@ -16,17 +14,13 @@ namespace AngularSchools.Client.Controllers
     [Route("[controller]")]
     public class PerfDataController : CommonController
     {
-     
-        private readonly ILogger<PerfDataController> _logger;
-        private readonly IConfiguration _configuration;
+ 
         public string HtmlClientApi { get; set; }
         public string ErrorString { get; set; }
 
-        public PerfDataController(ILogger<PerfDataController> logger,
-                                  IConfiguration configuration)
+        public PerfDataController(IConfiguration configuration)
         {
-            _logger = logger;
-            _configuration = configuration;
+         
 
             HtmlClientApi = configuration["htmlclient"];
         }

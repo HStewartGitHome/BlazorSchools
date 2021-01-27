@@ -1,7 +1,7 @@
-﻿using BlazorSchools.Server.Data;
-using BlazorSchools.Server.Data.EnitityFramework;
-using BlazorSchools.Server.Data.Sim;
-using BlazorSchools.Shared;
+﻿using BlazorSchools.Shared.Data.EnitityFramework;
+using BlazorSchools.Shared.Data;
+using BlazorSchools.Shared.Data.Sim;
+using BlazorSchools.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -16,27 +16,25 @@ namespace BlazorSchools.Server.Controllers
     [ApiController]
     public class SchoolPerformanceController : ControllerBase
     {
-        public string errorString { get; set; }
+        public string ErrorString { get; set; }
 
-        private IHttpClientFactory _clientFactory = null;
-        private ILogger<SchoolPerformanceController> _logger = null;
-        private SchoolsSqlDataService _sqlService = null;
-        private SchoolsSimDataService _simService = null;
-        private SchoolEFDataService _efService = null;
-        private CommonControllerSupport _support = null;
-        private IConfiguration _configuration = null;
-        private bool UseSim = false;
-        private bool UseEF = false;
-        private bool UseDapper = false;
-        private bool AllowEF = false;
-        private bool AllowDapper = false;
+        private readonly IHttpClientFactory _clientFactory = null;
+        private readonly ILogger<SchoolPerformanceController> _logger = null;
+        private readonly SchoolsSqlDataService _sqlService = null;
+        private readonly SchoolsSimDataService _simService = null;
+        private readonly SchoolEFDataService _efService = null;
+        private readonly CommonControllerSupport _support = null;
+        private readonly IConfiguration _configuration = null;
+        private readonly bool UseSim = false;
+        private readonly bool UseEF = false;
+        private readonly bool UseDapper = false;
+        private readonly bool AllowEF = false;
+        private readonly bool AllowDapper = false;
         private int Records = 0;
         private int DapperUpdatePerformance = 0;
         private int EFUpdatePerformance = 0;
         private int SimUpdatePerformance = 0;
-        private int MaxPage = 0;
-
-
+        private readonly int MaxPage = 0;
 
         public SchoolPerformanceController(ILogger<SchoolPerformanceController> logger,
                                            IHttpClientFactory clientFactory,
@@ -51,7 +49,6 @@ namespace BlazorSchools.Server.Controllers
             _simService = simService;
             _efService = efService;
             _configuration = configuration;
-
 
             try
             {
@@ -74,7 +71,6 @@ namespace BlazorSchools.Server.Controllers
                 if ((UseSim == false) && (UseEF == false) && (AllowDapper == true))
                     UseDapper = true;
 
-
                 string maxPage = configuration.GetValue<string>("MaxPage");
                 MaxPage = Convert.ToInt32(maxPage);
             }
@@ -83,31 +79,30 @@ namespace BlazorSchools.Server.Controllers
                 logger.LogError("Exception loading configuration", e);
             }
 
-
             _support = new CommonControllerSupport();
         }
-
 
         [HttpGet]
         public async Task<Performance> Get()
         {
             Stopwatch stopWatch;
-            Performance perf = new Performance();
-            perf.InitPerformance = 0;
-            perf.DapperPerformance = 0;
-            perf.EFPerformance = 0;
-            perf.JsonPerformance = 0;
-            perf.SimPerformance = 0;
-            perf.DapperPerformance2 = 0;
-            perf.EFPerformance2 = 0;
-            perf.JsonPerformance2 = 0;
-            perf.SimPerformance2 = 0;
-            perf.DapperUpdatePerformance = 0;
-            perf.EFUpdatePerformance = 0;
-            perf.SimUpdatePerformance = 0;
-            perf.Records = 0;
-            perf.MaxPage = MaxPage;
-
+            Performance perf = new Performance
+            {
+                InitPerformance = 0,
+                DapperPerformance = 0,
+                EFPerformance = 0,
+                JsonPerformance = 0,
+                SimPerformance = 0,
+                DapperPerformance2 = 0,
+                EFPerformance2 = 0,
+                JsonPerformance2 = 0,
+                SimPerformance2 = 0,
+                DapperUpdatePerformance = 0,
+                EFUpdatePerformance = 0,
+                SimUpdatePerformance = 0,
+                Records = 0,
+                MaxPage = MaxPage
+            };
 
             if (UseSim == true)
                 perf.UseSIM = 1;
@@ -118,7 +113,6 @@ namespace BlazorSchools.Server.Controllers
                 perf.UseEF = 1;
             else
                 perf.UseEF = 0;
-
 
             if (UseDapper == true)
                 perf.UseDapper = 1;
@@ -134,9 +128,6 @@ namespace BlazorSchools.Server.Controllers
                 perf.AllowDapper = 1;
             else
                 perf.AllowDapper = 0;
-
-
-
 
             try
             {
@@ -179,7 +170,6 @@ namespace BlazorSchools.Server.Controllers
                     _logger.LogInformation("Entity Framework Performance is {perf}", perf.EFPerformance);
                 }
 
-
                 if (UseSim == true)
                 {
                     _logger.LogInformation("Loading Simulated Database");
@@ -189,7 +179,6 @@ namespace BlazorSchools.Server.Controllers
                     perf.SimPerformance = (int)stopWatch.ElapsedMilliseconds;
                     _logger.LogInformation("Simulated Performance is {perf}", perf.SimPerformance);
                 }
-
 
                 _logger.LogInformation("Loading Json");
                 stopWatch = Stopwatch.StartNew();
@@ -207,7 +196,6 @@ namespace BlazorSchools.Server.Controllers
                     perf.DapperPerformance2 = (int)stopWatch.ElapsedMilliseconds;
                     _logger.LogInformation("Dapper Performance (2) is {perf}", perf.DapperPerformance2);
                 }
-
 
                 if (AllowEF == true)
                 {
@@ -244,8 +232,8 @@ namespace BlazorSchools.Server.Controllers
             // this routines loads data from Json and then stores them in updates dataservice
             _logger.LogInformation("Loading Json");
             Schools schoolList = await _support.GetJson(_clientFactory);
-            errorString = _support.errorString;
-            if ((errorString != null) && (errorString.Length > 0))
+            ErrorString = _support.ErrorString;
+            if ((ErrorString != null) && (ErrorString.Length > 0))
                 _logger.LogError("Error loading Json");
             else
             {
@@ -260,8 +248,8 @@ namespace BlazorSchools.Server.Controllers
                     stopWatch.Stop();
                     DapperUpdatePerformance = (int)stopWatch.ElapsedMilliseconds;
                     _logger.LogInformation("Dapper Update Performance  is {perf}", DapperUpdatePerformance);
-                    errorString = _support.errorString;
-                    if ((errorString != null) && (errorString.Length > 0))
+                    ErrorString = _support.ErrorString;
+                    if ((ErrorString != null) && (ErrorString.Length > 0))
                         _logger.LogError("Error updating Dapper SQL Database");
                 }
 
@@ -273,8 +261,8 @@ namespace BlazorSchools.Server.Controllers
                     stopWatch.Stop();
                     EFUpdatePerformance = (int)stopWatch.ElapsedMilliseconds;
                     _logger.LogInformation("Entity Framework Update Performance  is {perf}", EFUpdatePerformance);
-                    errorString = _support.errorString;
-                    if ((errorString != null) && (errorString.Length > 0))
+                    ErrorString = _support.ErrorString;
+                    if ((ErrorString != null) && (ErrorString.Length > 0))
                         _logger.LogError("Error updating Entity Framework SQL Database");
                 }
 
@@ -286,13 +274,11 @@ namespace BlazorSchools.Server.Controllers
                     stopWatch.Stop();
                     SimUpdatePerformance = (int)stopWatch.ElapsedMilliseconds;
                     _logger.LogInformation("Simulated  Update Performance  is {perf}", SimUpdatePerformance);
-                    errorString = _support.errorString;
-                    if ((errorString != null) && (errorString.Length > 0))
+                    ErrorString = _support.ErrorString;
+                    if ((ErrorString != null) && (ErrorString.Length > 0))
                         _logger.LogError("Error updating Simulated Database");
                 }
-
             }
-
         }
     }
 }

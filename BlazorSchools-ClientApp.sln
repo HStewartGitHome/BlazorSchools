@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorSchools.Client", "Razo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AngularSchools.Client", "AngularSchools.Client\AngularSchools.Client.csproj", "{11597CE1-4C54-4865-B937-33F7228B08AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactSchools.Client", "ReactSchools.Client\ReactSchools.Client.csproj", "{8A6855CE-EADD-4A05-9B54-2B3B6E23ACB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReactSchools.Client", "ReactSchools.Client\ReactSchools.Client.csproj", "{8A6855CE-EADD-4A05-9B54-2B3B6E23ACB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿using BlazorSchools.Shared;
+﻿using BlazorSchools.Shared.Models;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -16,7 +16,7 @@ namespace WpfSchools.Client.Support
         public int MaxIndexPerPage { get; set; }
         public string StatusMessage { get; set; }
         public string HtmlClientApi { get; set; }
-        private IConfiguration _configuration = null;
+    
 
         public SchoolsContentSupport(IConfiguration configuration)
         {
@@ -25,9 +25,7 @@ namespace WpfSchools.Client.Support
             CurrentIndex = 0;
             MaxIndex = -1;
             MaxIndexPerPage = 14;
-            _configuration = configuration;
             HtmlClientApi = configuration["htmlclient"];
-
         }
 
         public IPageDataModel CreatePageDataModel()
@@ -50,17 +48,13 @@ namespace WpfSchools.Client.Support
             Data.Header = MakeHeader();
             Data.HasHeader = true;
 
-
-
             Task.Run(async () =>
             {
                 HttpClient http = GetHttplClient(HtmlClientApi);
 
                 currentSchools = await http.GetFromJsonAsync<Schools>("SchoolModel");
                 MaxIndex = currentSchools.MaxIndex;
-
             }).Wait();
-
 
             StatusMessage = "  Start " + CurrentIndex.ToString() + " of " + MaxIndex.ToString();
 
@@ -72,19 +66,19 @@ namespace WpfSchools.Client.Support
             List<string> strings = null;
             for (int Index = 0; Index < count; Index++)
             {
-                strings = new List<string>();
-                strings.Add(currentSchools.schools[Index].name);
-                strings.Add(currentSchools.schools[Index].street);
-                strings.Add(currentSchools.schools[Index].city);
-                strings.Add(currentSchools.schools[Index].state);
-                strings.Add(currentSchools.schools[Index].zip);
+                strings = new List<string>
+                {
+                    currentSchools.schools[Index].name,
+                    currentSchools.schools[Index].street,
+                    currentSchools.schools[Index].city,
+                    currentSchools.schools[Index].state,
+                    currentSchools.schools[Index].zip
+                };
                 str = MakeContent(strings);
                 Data.Content[Index] = str;
             }
 
             return Data;
         }
-
     }
-
 }

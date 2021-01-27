@@ -15,9 +15,9 @@ export class PerfDataComponent {
   }
 }
 
-interface Performance{
+interface Performance {
   initPerformance: number;
-  jsonPerformance: number; 
+  jsonPerformance: number;
   dapperPerformance: number;
   efPerformance: number;
   simPerformance: number;
@@ -35,5 +35,4 @@ interface Performance{
   maxPage: number;
   allowDapper: number;
   allowEF: number;
- 
 }

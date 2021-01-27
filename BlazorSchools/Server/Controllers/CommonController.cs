@@ -1,5 +1,5 @@
-﻿using BlazorSchools.Server.Data;
-using BlazorSchools.Shared;
+﻿using BlazorSchools.Shared.Data;
+using BlazorSchools.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -10,7 +10,7 @@ namespace BlazorSchools.Server.Controllers
 {
     public class CommonControllerSupport
     {
-        public string errorString { get; set; }
+        public string ErrorString { get; set; }
 
         public int MaxListCount { get; set; }
 
@@ -18,26 +18,25 @@ namespace BlazorSchools.Server.Controllers
         {
             Schools schoolList = null;
 
-            errorString = "";
+            ErrorString = "";
             var client = clientFactory.CreateClient("school");
 
             try
             {
                 // gets cast exception
                 schoolList = await client.GetFromJsonAsync<Schools>("");
-                errorString = null;
+                ErrorString = null;
             }
             catch (System.InvalidCastException ex)
             {
-                errorString = $"Invalid Cast Exception getting our schools: { ex.Message }";
+                ErrorString = $"Invalid Cast Exception getting our schools: { ex.Message }";
             }
             catch (Exception ex)
             {
-                errorString = $"Exception getting our schools: { ex.Message }";
+                ErrorString = $"Exception getting our schools: { ex.Message }";
             }
 
             return schoolList;
-
         }
 
         public async Task<Schools> GetData(ISchoolsDataService dataService,
@@ -45,11 +44,11 @@ namespace BlazorSchools.Server.Controllers
                                            int maxIndex)
         {
             Schools schoolList = new Schools();
-            List<School> schools;
+            List<SchoolItem> schools;
             int index = 0;
             int indexCounter = 0;
-            int schoolCount = 0;
-            errorString = "";
+            int schoolCount;
+            ErrorString = "";
 
             try
             {
@@ -63,26 +62,28 @@ namespace BlazorSchools.Server.Controllers
                     schoolCount = maxIndex;
                 schoolList.schools = null;
                 if (schools.Count > 0)
-                    schoolList.schools = new School[schoolCount];
+                    schoolList.schools = new SchoolItem[schoolCount];
 
-                foreach (School school in schools)
+                foreach (SchoolItem school in schools)
                 {
                     if (((indexCounter++ >= startIndex) && (index < maxIndex)) || (maxIndex == 0))
                     {
-                        School newSchool = new School();
-                        newSchool.id = school.id;
-                        newSchool.name = school.name;
-                        newSchool.street = school.street;
-                        newSchool.city = school.city;
-                        newSchool.state = school.state;
-                        newSchool.zip = school.zip;
+                        SchoolItem newSchool = new SchoolItem
+                        {
+                            Id = school.Id,
+                            name = school.name,
+                            street = school.street,
+                            city = school.city,
+                            state = school.state,
+                            zip = school.zip
+                        };
                         schoolList.schools[index++] = newSchool;
                     }
                 }
             }
             catch (Exception ex)
             {
-                errorString = $"Exception getting our schools database: { ex.Message }";
+                ErrorString = $"Exception getting our schools database: { ex.Message }";
             }
 
             return schoolList;
@@ -90,16 +91,15 @@ namespace BlazorSchools.Server.Controllers
 
         public async Task UpdateData(Schools schoolList, ISchoolsDataService dataService)
         {
-            errorString = "";
+            ErrorString = "";
             try
             {
                 await dataService.Create(schoolList);
             }
             catch (Exception ex)
             {
-                errorString = $"Exception creating our schools database: { ex.Message }";
+                ErrorString = $"Exception creating our schools database: { ex.Message }";
             }
         }
-
     }
 }

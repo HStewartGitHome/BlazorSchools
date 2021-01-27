@@ -1,7 +1,7 @@
-﻿using BlazorSchools.Server.Data;
-using BlazorSchools.Server.Data.EnitityFramework;
-using BlazorSchools.Server.Data.Sim;
-using BlazorSchools.Shared;
+﻿using BlazorSchools.Shared.Data.EnitityFramework;
+using BlazorSchools.Shared.Data;
+using BlazorSchools.Shared.Data.Sim;
+using BlazorSchools.Shared.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -16,14 +16,13 @@ namespace BlazorSchools.Server.Controllers
     [ApiController]
     public class SchoolPageController : ControllerBase
     {
-        public string errorString { get; set; }
+        public string ErrorString { get; set; }
 
-        private IHttpClientFactory _clientFactory = null;
-        private ILogger<SchoolPageController> _logger = null;
-        private ISchoolsDataService _dataService = null;
-        private CommonControllerSupport _support = null;
-        private int MaxPage = 0;
-
+        private readonly IHttpClientFactory _clientFactory = null;
+        private readonly ILogger<SchoolPageController> _logger = null;
+        private readonly ISchoolsDataService _dataService = null;
+        private readonly CommonControllerSupport _support = null;
+        private readonly int MaxPage = 0;
 
         public SchoolPageController(ILogger<SchoolPageController> logger,
                                        IHttpClientFactory clientFactory,
@@ -57,13 +56,8 @@ namespace BlazorSchools.Server.Controllers
                 logger.LogError("Exception loading configuration", e);
             }
 
-
             _support = new CommonControllerSupport();
-
         }
-
-
-
 
         [HttpGet]
         public async Task<Schools> Get(string param)
@@ -111,42 +105,36 @@ namespace BlazorSchools.Server.Controllers
                     schoolList.MaxIndex = _support.MaxListCount;
                     schoolList.MaxPage = maxIndex;
                 }
-
             }
             catch (Exception ex)
             {
-                errorString = $"Exception getting our schools: { ex.Message }";
-                _logger.LogError(errorString);
+                ErrorString = $"Exception getting our schools: { ex.Message }";
+                _logger.LogError(ErrorString);
             }
 
             return schoolList;
-
         }
 
         public async Task<Schools> GetJson()
         {
             Schools schoolList = await _support.GetJson(_clientFactory);
-            errorString = _support.errorString;
+            ErrorString = _support.ErrorString;
 
             return schoolList;
-
         }
 
         public async Task<Schools> GetData(int startIndex, int maxIndex)
         {
             Schools schoolList = await _support.GetData(_dataService, startIndex, maxIndex);
-            errorString = _support.errorString;
+            ErrorString = _support.ErrorString;
 
             return schoolList;
-
         }
 
         public async Task UpdateData(Schools schoolList)
         {
             await _support.UpdateData(schoolList, _dataService);
-            errorString = _support.errorString;
-
+            ErrorString = _support.ErrorString;
         }
     }
 }
-

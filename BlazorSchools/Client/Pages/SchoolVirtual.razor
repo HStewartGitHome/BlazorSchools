@@ -1,0 +1,70 @@
+﻿@page "/SchoolVirtual"
+
+@using BlazorSchools.Shared.Models
+@inject HttpClient Http
+
+
+<h3>School API Data (Virtual .Net 5)</h3>
+
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+<div class="h2">@errorString</div> }
+            else if (currentSchools is null)
+            {
+<div class="h4">Loading...</div> }
+            else
+            {
+<p>
+    Start @currentSchools.CurrentIndex  of @currentSchools.MaxIndex
+</p>
+
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Street</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zip</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <Virtualize Items="theSchools" Context="s">
+                            <tr>
+                                <td>@s.name</td>
+                                <td>@s.street</td>
+                                <td>@s.city</td>
+                                <td>@s.state</td>
+                                <td>@s.zip</td>
+                            </tr>
+                        </Virtualize>
+                    </tbody>
+                </table>}
+
+@code { private Schools currentSchools;
+    List<SchoolItem> theSchools;
+    private string errorString;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+
+        try
+        {
+            currentSchools = await Http.GetFromJsonAsync<Schools>("SchoolModel");
+
+            int count = currentSchools.schools.Count();
+            theSchools = new List<SchoolItem>();
+            foreach (SchoolItem s in currentSchools.schools)
+            {
+                theSchools.Add(s);
+            }
+
+            errorString = null;
+        }
+        catch (Exception ex)
+        {
+            errorString = $"There was an error getting our schools: { ex.Message }";
+        }
+    } }

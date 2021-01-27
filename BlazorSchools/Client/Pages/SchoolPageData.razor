@@ -1,6 +1,7 @@
 ﻿@page "/SchoolPageData"
 
-@using BlazorSchools.Shared
+@using BlazorSchools.Shared.Models
+@using BlazorSchools.Shared.Services
 @inject HttpClient Http
 
 
@@ -8,100 +9,89 @@
 
 @if (string.IsNullOrWhiteSpace(errorString) == false)
 {
-    <div class="h2">@errorString</div>
-}
-else if (currentSchools is null)
-{
-    <div class="h4">Loading...</div>
-}
-else
-{
-    <p>
-        Start @currentSchools.CurrentIndex  of @currentSchools.MaxIndex
-    </p>
-
-    <button @onclick="OnNext">   Next   </button>
-    <button @onclick="OnPrev">   Prev   </button>
-
-    <table class="table table-striped">
-        <thead class="thead-dark">
-            <tr>
-                <th>Name</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Zip</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var s in currentSchools.schools)
+<div class="h2">@errorString</div> }
+            else if (currentSchools is null)
             {
-                <tr>
-                    <td>@s.name</td>
-                    <td>@s.street</td>
-                    <td>@s.city</td>
-                    <td>@s.state</td>
-                    <td>@s.zip</td>
-                </tr>
+<div class="h4">Loading...</div> }
+            else
+            {
+<p>
+    Start @currentSchools.CurrentIndex  of @currentSchools.MaxIndex
+</p>
+
+                <button @onclick="OnNext">   Next   </button>
+                                <button @onclick="OnPrev">   Prev   </button>
+
+                                                <table class="table table-striped">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Street</th>
+                                                            <th>City</th>
+                                                            <th>State</th>
+                                                            <th>Zip</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var s in currentSchools.schools)
+                                                        {
+                                        <tr>
+                                            <td>@s.name</td>
+                                            <td>@s.street</td>
+                                            <td>@s.city</td>
+                                            <td>@s.state</td>
+                                            <td>@s.zip</td>
+                                        </tr>}
+                                                    </tbody>
+                                                </table>}
+
+@code { private Schools currentSchools;
+            private string errorString;
+            private int currentIndex = 0;
+            private int maxIndex = 0;
+            private int maxPage = 0;
+
+            protected override async Task OnInitializedAsync()
+            {
+                await ShowPage(0);
             }
-        </tbody>
-    </table>
-}
 
-@code {
-
-    private Schools currentSchools;
-    private string errorString;
-    private int currentIndex = 0;
-    private int maxIndex = 0;
-    private int maxPage = 0;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await ShowPage(0);
-    }
-
-    internal async Task ShowPage(int index)
-    {
-        try
-        {
-            string str = "SchoolPage?param=" + index.ToString() + ",0";
-            currentSchools = await Http.GetFromJsonAsync<Schools>(str);
-            currentIndex = index;
-            maxIndex = currentSchools.MaxIndex;
-            maxPage = currentSchools.MaxPage;
+            internal async Task ShowPage(int index)
+            {
+                try
+                {
+                    string str = "SchoolPage?param=" + index.ToString() + ",0";
+                    currentSchools = await Http.GetFromJsonAsync<Schools>(str);
+                    currentIndex = index;
+                    maxIndex = currentSchools.MaxIndex;
+                    maxPage = currentSchools.MaxPage;
 
 
-            errorString = null;
-        }
-        catch (Exception ex)
-        {
-            errorString = $"There was an error getting our schools: { ex.Message }";
-        }
-    }
+                    errorString = null;
+                }
+                catch (Exception ex)
+                {
+                    errorString = $"There was an error getting our schools: { ex.Message }";
+                }
+            }
 
-    public async Task OnNext()
-    {
-        int newIndex = currentIndex + maxPage;
-        if (newIndex <= maxIndex)
-            currentIndex = newIndex;
+            public async Task OnNext()
+            {
+                int newIndex = currentIndex + maxPage;
+                if (newIndex <= maxIndex)
+                    currentIndex = newIndex;
 
-        await ShowPage(currentIndex);
+                await ShowPage(currentIndex);
 
-    }
+            }
 
-    public async Task OnPrev()
-    {
-        int newIndex = currentIndex - maxPage;
-        if (newIndex < 0)
-            newIndex = 0;
-        currentIndex = newIndex;
+            public async Task OnPrev()
+            {
+                int newIndex = currentIndex - maxPage;
+                if (newIndex < 0)
+                    newIndex = 0;
+                currentIndex = newIndex;
 
-        await ShowPage(currentIndex);
+                await ShowPage(currentIndex);
 
-    }
-
-
-
-
-}
+            } }
