@@ -99,7 +99,7 @@ else
 
 @code {
 
-    private Performance currentPerf;
+    private PerformanceRecord currentPerf;
     private string errorString;
 
     protected override async Task OnInitializedAsync()
@@ -107,7 +107,7 @@ else
 
         try
         {
-            currentPerf = await Http.GetFromJsonAsync<Performance>("SchoolPerformance");
+            currentPerf = await Http.GetFromJsonAsync<PerformanceRecord>("SchoolPerformance");
 
             errorString = null;
         }

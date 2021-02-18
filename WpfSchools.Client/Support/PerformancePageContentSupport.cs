@@ -10,7 +10,7 @@ namespace WpfSchools.Client.Support
 {
     public class PerformancePageContentSupport : PageContentSupport
     {
-        private Performance currentPerf;
+        private PerformanceRecord currentPerf;
         public string TitleMessage { get; set; }
         public string HtmlClientApi { get; set; }
 
@@ -41,7 +41,7 @@ namespace WpfSchools.Client.Support
             Task.Run(async () =>
             {
                 HttpClient http = GetHttplClient(HtmlClientApi);
-                currentPerf = await http.GetFromJsonAsync<Performance>("SchoolPerformance");
+                currentPerf = await http.GetFromJsonAsync<PerformanceRecord>("SchoolPerformance");
             }).Wait();
 
             if (currentPerf != null)

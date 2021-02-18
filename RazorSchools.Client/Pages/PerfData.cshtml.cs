@@ -15,7 +15,7 @@ namespace RazorSchools.Client.Pages
 {
     public class PerfDataModel : PageContentSupport
     {
-        public Performance CurrentPerf { get; set; }
+        public PerformanceRecord CurrentPerf { get; set; }
         public string ErrorString { get; set; }
 
         public string HtmlClientApi { get; set; }
@@ -32,7 +32,7 @@ namespace RazorSchools.Client.Pages
             try
             {
                 HttpClient http = GetHttplClient(HtmlClientApi);
-                CurrentPerf = await http.GetFromJsonAsync<Performance>("SchoolPerformance");
+                CurrentPerf = await http.GetFromJsonAsync<PerformanceRecord>("SchoolPerformance");
 
                 ErrorString = null;
             }

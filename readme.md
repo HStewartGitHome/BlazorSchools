@@ -86,6 +86,11 @@ Updated projects to use .NET 5.0 set update.md for details on process.
 
 Mode data and data access from BlazorSchools.Server to BlazorSchools.Shared
 
+Updated: 02/18/2021
+
+Updated projects that use Performance object to return PerformanceRecord as new .Net 5 0.0
+This ios only currently for performance and only when returning Json.
+
 Database services
 =================
 
