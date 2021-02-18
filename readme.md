@@ -88,8 +88,9 @@ Mode data and data access from BlazorSchools.Server to BlazorSchools.Shared
 
 Updated: 02/18/2021
 
-Updated projects that use Performance object to return PerformanceRecord as new .Net 5 0.0
-This ios only currently for performance and only when returning Json.
+Updated projects that use Performance object to return PerformanceRecord as new .Net 5
+This is only currently for performance and only when returning Json.  Angular and React 
+did not have to change.
 
 Database services
 =================
