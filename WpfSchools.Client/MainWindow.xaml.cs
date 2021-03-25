@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using WpfSchools.Client.Models;
@@ -123,6 +124,7 @@ namespace WpfSchools.Client
             textPageText.Text = "";
             ShowPagedContent(0);
         }
+ 
 
         public void OnClickPerformancePress(object sender, RoutedEventArgs e)
         {
@@ -161,7 +163,8 @@ namespace WpfSchools.Client
             }
         }
 
-        public void ShowPagedContent(int nextIndex)
+    
+        public  void  ShowPagedContent(int nextIndex)
         {
             textPageTitle.Text = "   School API Data Pages";
             textPageText.Text = "";
@@ -192,6 +195,7 @@ namespace WpfSchools.Client
                 textPageHeader.Visibility = Visibility.Collapsed;
                 EnableListItems(0);
             }
+
         }
 
         public void OnClickNextPress(object sender, RoutedEventArgs e)
@@ -209,6 +213,8 @@ namespace WpfSchools.Client
                 nextIndex = PagedSupport.PrevIndex();
             ShowPagedContent(nextIndex);
         }
+
+
 
         private void ShowLoading(string title)
         {

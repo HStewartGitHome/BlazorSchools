@@ -16,7 +16,7 @@ namespace WpfSchools.Client.Support
         public int MaxIndexPerPage { get; set; }
         public string StatusMessage { get; set; }
         public string HtmlClientApi { get; set; }
-  
+
         public SchoolsPagedContentSupport(IConfiguration configuration)
         {
             TitleMessage = "School Data";
@@ -51,49 +51,59 @@ namespace WpfSchools.Client.Support
 
         public IPageDataModel CreatePageDataModel(int nextIndex)
         {
-            Schools currentSchools = null;
             IPageDataModel Data = new PageDataModel();
-            string str;
 
-            // First setup field
-            AddField("Name", 28);
-            AddField("Update", 28);
-            AddField("City", 12);
-            AddField("State", 7);
-            AddField("Zip", 5);
+            Schools currentSchools = GetCurrentSchools(nextIndex);
 
-            Data.Title = TitleMessage;
-            Data.HasMessage = false;
+            CreateHeader(Data, TitleMessage);
+            StatusMessage = $"  Start {CurrentIndex} of {MaxIndex}";
 
-            // Make header
-            Data.Header = MakeHeader();
-            Data.HasHeader = true;
+            int count = GetCount(currentSchools, MaxIndexPerPage);
+            CreateDataContentStrings(Data, currentSchools, count);
 
+            return Data;
+        }
+
+        public Schools GetCurrentSchools(int nextIndex)
+        {
+            Schools currentSchools = null;
+
+            // need better way for this 
             Task.Run(async () =>
             {
                 HttpClient http = GetHttplClient(HtmlClientApi);
-
-                string str = "SchoolPage?param=" + nextIndex.ToString() + "," + MaxIndexPerPage.ToString();
+                string str = $"SchoolPage?param={nextIndex},{MaxIndexPerPage}";
                 currentSchools = await http.GetFromJsonAsync<Schools>(str);
-                CurrentIndex = nextIndex;
-                MaxIndex = currentSchools.MaxIndex;
-                if (MaxIndexPerPage > currentSchools.MaxPage)
-                    MaxIndexPerPage = currentSchools.MaxPage;
             }).Wait();
 
-            StatusMessage = "  Start " + CurrentIndex.ToString() + " of " + MaxIndex.ToString();
+            CurrentIndex = nextIndex;
+            MaxIndex = currentSchools.MaxIndex;
+            if (MaxIndexPerPage > currentSchools.MaxPage)
+                MaxIndexPerPage = currentSchools.MaxPage;
 
-            Data.HasContent = true;
+            return currentSchools;
+        }
+
+        public static int GetCount(Schools currentSchools,
+                             int maxIndexPerPage)
+        {
             int count = currentSchools.schools.Length;
-            if (count > MaxIndexPerPage)
+            if (count > maxIndexPerPage)
                 count = currentSchools.MaxPage;
-            Data.Content = new string[count];
-            Data.ContentFontSize = 18;
+            return count;
+        }
 
-            List<string> strings = null;
+        private void CreateDataContentStrings(IPageDataModel data,
+                                                     Schools currentSchools,
+                                                     int count)
+        {
+            data.HasContent = true;
+            data.Content = new string[count];
+            data.ContentFontSize = 18;
+
             for (int Index = 0; Index < count; Index++)
             {
-                strings = new List<string>
+                var strings = new List<string>
                 {
                     currentSchools.schools[Index].name,
                     currentSchools.schools[Index].street,
@@ -101,11 +111,27 @@ namespace WpfSchools.Client.Support
                     currentSchools.schools[Index].state,
                     currentSchools.schools[Index].zip
                 };
-                str = MakeContent(strings);
-                Data.Content[Index] = str;
-            }
 
-            return Data;
+                data.Content[Index] = MakeContent(strings);
+            }
+        }
+
+        private void CreateHeader(IPageDataModel data,
+                                   string titleMessage)
+        {
+            // First setup field
+            AddField("Name", 28);
+            AddField("Update", 28);
+            AddField("City", 12);
+            AddField("State", 7);
+            AddField("Zip", 5);
+
+            data.Title = titleMessage;
+            data.HasMessage = false;
+
+            // Make header
+            data.Header = MakeHeader();
+            data.HasHeader = true;
         }
     }
 }

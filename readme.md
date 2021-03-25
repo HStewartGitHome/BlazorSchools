@@ -88,9 +88,14 @@ Mode data and data access from BlazorSchools.Server to BlazorSchools.Shared
 
 Updated: 02/18/2021
 
-Updated projects that use Performance object to return PerformanceRecord as new .Net 5
-This is only currently for performance and only when returning Json.  Angular and React 
-did not have to change.
+Updated projects that use Performance object to return PerformanceRecord as new
+.Net 5 This is only currently for performance and only when returning Json.
+Angular and React did not have to change.
+
+Updated: 03/25/2021
+
+Updated with some WPF source changes and images related to performance changes
+because .Net 5 related to Entity Framework. In this document.
 
 Database services
 =================
@@ -152,6 +157,18 @@ details with all storage service active
 
 ![](media/6b77f25f42b2011237c9ee1f6c6eb7ff.png)
 
+The following is updated .Net 5 version showing improve performance of Entity
+Framework. Before this changes Dapper look, it was possible having better
+performance.
+
+![](media/c64f8d87d12803eff6884b83fee0b2ff.png)
+
+Even more impressive is requests that were repeated after that and appears that
+Entity Framework is caching the data and simulated data services are not
+required when it is used.
+
+![](media/5d30b707de7c3e42cd6347f6a35899e2.png)
+
 WPF Client
 ==========
 
@@ -199,11 +216,7 @@ made two solutions one with and one with client app supported applications.
 
 The following is example of same performance screen.
 
-![Table Description automatically generated](media/1c76210adf2116d41f32998d3ddda516.jpg)
-
-Table Description automatically generated
-
-Table Description automatically generated
+![](media/1c76210adf2116d41f32998d3ddda516.jpg)
 
 ASP.NET React Client
 ====================
@@ -217,8 +230,5 @@ made two solutions one with and one with client app supported applications.
 
 The following is example of same performance screen.
 
-![Table Description automatically generated](media/d0c1902d66faf6acdc648412ea0c749c.jpg)
+![](media/d0c1902d66faf6acdc648412ea0c749c.jpg)
 
-Table Description automatically generated
-
-Table Description automatically generated
