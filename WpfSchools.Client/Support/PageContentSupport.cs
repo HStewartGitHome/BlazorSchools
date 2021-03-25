@@ -1,4 +1,5 @@
-﻿using BlazorSchools.Shared.Services;
+﻿using BlazorSchools.Shared.Models;
+using BlazorSchools.Shared.Services;
 using System.Collections.Generic;
 using System.Net.Http;
 using WpfSchools.Client.Models;
@@ -68,6 +69,47 @@ namespace WpfSchools.Client.Support
         {
             HttpClient client = ClientFactory.GetHttplClient(str);
             return client;
+        }
+
+        public void CreateHeader(IPageDataModel data,
+                                  string titleMessage)
+        {
+            // First setup field
+            AddField("Name", 28);
+            AddField("Update", 28);
+            AddField("City", 12);
+            AddField("State", 7);
+            AddField("Zip", 5);
+
+            data.Title = titleMessage;
+            data.HasMessage = false;
+
+            // Make header
+            data.Header = MakeHeader();
+            data.HasHeader = true;
+        }
+
+        public void CreateDataContentStrings(IPageDataModel data,
+                                                     Schools currentSchools,
+                                                     int count)
+        {
+            data.HasContent = true;
+            data.Content = new string[count];
+            data.ContentFontSize = 18;
+
+            for (int Index = 0; Index < count; Index++)
+            {
+                var strings = new List<string>
+                {
+                    currentSchools.schools[Index].name,
+                    currentSchools.schools[Index].street,
+                    currentSchools.schools[Index].city,
+                    currentSchools.schools[Index].state,
+                    currentSchools.schools[Index].zip
+                };
+
+                data.Content[Index] = MakeContent(strings);
+            }
         }
     }
 }

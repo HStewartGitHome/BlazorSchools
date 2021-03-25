@@ -1,6 +1,5 @@
 ﻿using BlazorSchools.Shared.Models;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -16,7 +15,6 @@ namespace WpfSchools.Client.Support
         public int MaxIndexPerPage { get; set; }
         public string StatusMessage { get; set; }
         public string HtmlClientApi { get; set; }
-    
 
         public SchoolsContentSupport(IConfiguration configuration)
         {
@@ -30,24 +28,23 @@ namespace WpfSchools.Client.Support
 
         public IPageDataModel CreatePageDataModel()
         {
-            Schools currentSchools = null;
             IPageDataModel Data = new PageDataModel();
-            string str;
 
-            // First setup field
-            AddField("Name", 28);
-            AddField("Update", 28);
-            AddField("City", 12);
-            AddField("State", 7);
-            AddField("Zip", 5);
+            Schools currentSchools = GetCurrentSchools();
 
-            Data.Title = TitleMessage;
-            Data.HasMessage = false;
+            CreateHeader(Data, TitleMessage);
 
-            // Make header
-            Data.Header = MakeHeader();
-            Data.HasHeader = true;
+            StatusMessage = $"  Start {CurrentIndex} of {MaxIndex}";
+            CreateDataContentStrings(Data, currentSchools, currentSchools.schools.Length);
 
+            return Data;
+        }
+
+        public Schools GetCurrentSchools()
+        {
+            Schools currentSchools = null;
+
+            // need better way for this
             Task.Run(async () =>
             {
                 HttpClient http = GetHttplClient(HtmlClientApi);
@@ -56,29 +53,7 @@ namespace WpfSchools.Client.Support
                 MaxIndex = currentSchools.MaxIndex;
             }).Wait();
 
-            StatusMessage = "  Start " + CurrentIndex.ToString() + " of " + MaxIndex.ToString();
-
-            Data.HasContent = true;
-            int count = currentSchools.schools.Length;
-            Data.Content = new string[count];
-            Data.ContentFontSize = 18;
-
-            List<string> strings = null;
-            for (int Index = 0; Index < count; Index++)
-            {
-                strings = new List<string>
-                {
-                    currentSchools.schools[Index].name,
-                    currentSchools.schools[Index].street,
-                    currentSchools.schools[Index].city,
-                    currentSchools.schools[Index].state,
-                    currentSchools.schools[Index].zip
-                };
-                str = MakeContent(strings);
-                Data.Content[Index] = str;
-            }
-
-            return Data;
+            return currentSchools;
         }
     }
 }
